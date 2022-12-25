@@ -21,7 +21,7 @@ def handler(ctx, data: io.BytesIO=None):
             # update with your bucket name
             bucket_name = "assignment1"
             file_object_name = ctx.RequestURL()
-            if file_object_name.endswith("/app1"):
+            if file_object_name.endswith("/"):
                 logging.getLogger().info("Adding index.html to request URL " + file_object_name)
                 file_object_name += "index.html"
 

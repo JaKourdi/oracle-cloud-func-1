@@ -21,17 +21,7 @@ def handler(ctx, data: io.BytesIO=None):
             # update with your bucket name
             bucket_name = "assignment1"
             file_object_name = ctx.RequestURL()
-            str_end_with = "/app1"
-            if file_object_name.endswith(str_end_with):
-                
-                logging.getLogger().info("Adding index.html to request URL " + file_object_name)
-                file_object_name += "index.html"
-
-            # strip off the first character of the URI (i.e. the /)
-            num_to_strip = len(str_end_with)
-            file_object_name = file_object_name[len(str_end_with):]
-
-            obj = object_storage.get_object(namespace, bucket_name, file_object_name)
+            obj = object_storage.get_object(namespace, bucket_name,"index.html")
             return response.Response(
                 ctx, response_data=obj.data.content,
                 headers={"Content-Type": obj.headers['Content-type']}
